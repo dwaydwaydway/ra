@@ -18,7 +18,7 @@ def parse_args():
 
 def main(config):
     # read data
-    df = pd.read_excel("../data/data_03212021_for_analysis.xlsx")
+    df = pd.read_excel(config.data)
     # get all titles, references and add delimeters ('喜見久別的友人 再度帶來物資' => '喜見久別的友人，再度帶來物資')
     titles, references = df['Title'].to_list(), df['Reference'].to_list()
     titles, references = \
@@ -26,7 +26,7 @@ def main(config):
     del df
 
     # word segmentation
-    ws = WS("../data/ckip_data")
+    ws = WS(config.tagger_src)
     titles_tokenized, references_tokenized = ws(titles), ws(references)
     del ws
     title_freq, reference_freq = \
@@ -46,7 +46,7 @@ def main(config):
     })
 
     # Create a Pandas Excel writer using XlsxWriter as the engine.
-    with pd.ExcelWriter('../data/frequency.xlsx') as writer:
+    with pd.ExcelWriter(f'../data/{config.output}') as writer:
         df_title.to_excel(writer, sheet_name='Title Frequency', index=False)
         df_reference.to_excel(writer, sheet_name='Reference Frequency', index=False)
 
