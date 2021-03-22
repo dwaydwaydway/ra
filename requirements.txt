@@ -1,0 +1,6 @@
+python-box
+ruamel.yaml
+ipdb
+pandas
+ckiptagger[tfgpu,gdown]
+openpyxl
