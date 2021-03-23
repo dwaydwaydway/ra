@@ -1,3 +1,4 @@
 tagger_src: "../data/ckip_data"
 data: "../data/data_03212021_for_analysis.xlsx"
 output: "frequency.xlsx"
+sheets: ["慈濟全球社區網", "慈濟全球資訊網", "慈濟月刊"]
